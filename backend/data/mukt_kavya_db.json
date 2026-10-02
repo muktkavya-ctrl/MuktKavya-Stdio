@@ -1,0 +1,577 @@
+{
+  "users": [
+    {
+      "_id": "ru4pgbv4mur3qbeb",
+      "name": "Mukt Kavya Pradhan (Super Admin)",
+      "email": "superadmin@muktkavya.com",
+      "password": "$2a$10$Ey3GyQBk3B6DmgcRNDNGFe7TAQOLfVxq/9wG3TtaECd3cKHApdyMW",
+      "role": "superadmin",
+      "penName": "महाप्रबंधक",
+      "bio": "Chief custodian & guardian of the Mukt Kavya poetry archives and platform administration.",
+      "avatar": "",
+      "languages": [
+        "Hindi",
+        "English",
+        "Sanskrit",
+        "Urdu"
+      ],
+      "socials": {},
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:13.676Z",
+      "updatedAt": "2026-10-02T15:12:13.676Z"
+    },
+    {
+      "_id": "pucj0ktqmur3qbfz",
+      "name": "Aditya Sen (Content Director)",
+      "email": "admin@muktkavya.com",
+      "password": "$2a$10$0Q2Qq.C.VL2IzdSHvTKqKOqhMkxye4NOKcA7.jC00iTECVInFyaCi",
+      "role": "admin",
+      "penName": "काव्य-सम्पादक",
+      "bio": "Senior editor and multilingual literary curator at Mukt Kavya.",
+      "avatar": "",
+      "languages": [
+        "Hindi",
+        "Bengali",
+        "English"
+      ],
+      "socials": {},
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:13.734Z",
+      "updatedAt": "2026-10-02T15:12:13.734Z"
+    },
+    {
+      "_id": "82t61it4mur3qbhk",
+      "name": "रामधारी सिंह \"दिनकर\"",
+      "email": "dinkar@muktkavya.com",
+      "password": "$2a$10$.PlrTtazVj.LDKb/J7TZxO7rb8HL45nsvySgMsuaRSr1zii5d3Kq2",
+      "role": "writer",
+      "penName": "दिनकर",
+      "bio": "राष्ट्रकवि, ओज और वीर रस के अमर गायक। रश्मिरथी एवं उर्वशी के रचयिता।",
+      "avatar": "",
+      "languages": [
+        "Hindi"
+      ],
+      "socials": {
+        "website": "https://en.wikipedia.org/wiki/Ramdhari_Singh_Dinkar"
+      },
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:13.790Z",
+      "updatedAt": "2026-10-02T15:12:13.790Z"
+    },
+    {
+      "_id": "rk2yigswmur3qbj4",
+      "name": "मिर्ज़ा असदुल्लाह ख़ाँ \"ग़ालिब\"",
+      "email": "ghalib@muktkavya.com",
+      "password": "$2a$10$6c8qVuHjPIhTWnsTWVgMp.xKnPXRTFL29NzUOvQkLqQxe35gWRycq",
+      "role": "writer",
+      "penName": "ग़ालिब",
+      "bio": "उर्दू और फ़ारसी शायरी के बेताज बादशाह। दहलवी तख़ल्लुस के अमर शायर।",
+      "avatar": "",
+      "languages": [
+        "Urdu",
+        "Hindi"
+      ],
+      "socials": {
+        "website": "https://en.wikipedia.org/wiki/Ghalib"
+      },
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:13.847Z",
+      "updatedAt": "2026-10-02T15:12:13.847Z"
+    },
+    {
+      "_id": "8pgv2cqjmur3qbko",
+      "name": "रवींद्रनाथ ठाकुर (Rabindranath Tagore)",
+      "email": "tagore@muktkavya.com",
+      "password": "$2a$10$1pLVmluxqomsLCB.FNLBZOpYqcWQpJOk.ha/ea1N59ns2ad4iySXK",
+      "role": "writer",
+      "penName": "भानुसिंह",
+      "bio": "नोबेल पुरस्कार विजेता, गीतांजलि के रचयिता, विश्वकवि।",
+      "avatar": "",
+      "languages": [
+        "Bengali",
+        "English",
+        "Hindi"
+      ],
+      "socials": {
+        "website": "https://en.wikipedia.org/wiki/Rabindranath_Tagore"
+      },
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:13.903Z",
+      "updatedAt": "2026-10-02T15:12:13.903Z"
+    },
+    {
+      "_id": "9rpug49xmur3qbm9",
+      "name": "कवि कलापी (Sursinhji Takhtasinhji)",
+      "email": "kalapi@muktkavya.com",
+      "password": "$2a$10$Mal1COcgrPCDQtbeKB4sbenuM1vKCjl14rpTep69w78E566PuSeR6",
+      "role": "writer",
+      "penName": "कलापी",
+      "bio": "ગુજરાતી સાહિત્યના અમર પ્રણય અને દર્દના કવિ, લાઠીના રાજવી.",
+      "avatar": "",
+      "languages": [
+        "Gujarati"
+      ],
+      "socials": {},
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:13.958Z",
+      "updatedAt": "2026-10-02T15:12:13.958Z"
+    },
+    {
+      "_id": "2ulh0vzpmur3qbns",
+      "name": "बहिणाबाई चौधरी (Bahinabai Chaudhari)",
+      "email": "bahinabai@muktkavya.com",
+      "password": "$2a$10$evtL/RI4ThbyhJNhY9.F.OodR/x6/4bLDk2UdNPOTg9TS0uOyHMIm",
+      "role": "writer",
+      "penName": "बहिणा",
+      "bio": "मराठीतील थोर निसर्गकन्या आणि तत्त्वज्ञ कवयित्री.",
+      "avatar": "",
+      "languages": [
+        "Marathi"
+      ],
+      "socials": {},
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:14.014Z",
+      "updatedAt": "2026-10-02T15:12:14.014Z"
+    },
+    {
+      "_id": "4fgqxj2imur3qbpe",
+      "name": "Sarojini Naidu",
+      "email": "sarojini@muktkavya.com",
+      "password": "$2a$10$ctpvdsBzrCx1GmfGEW1urOenQ.44aznvq.Bncp1NXzpiXLiUqAC8G",
+      "role": "writer",
+      "penName": "The Nightingale of India",
+      "bio": "Poet, freedom fighter, and lyricist of Indian imagery and folklore in English verse.",
+      "avatar": "",
+      "languages": [
+        "English"
+      ],
+      "socials": {},
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:14.072Z",
+      "updatedAt": "2026-10-02T15:12:14.072Z"
+    },
+    {
+      "_id": "fnxuzzn6mur3qbqx",
+      "name": "काव्य रसिक (Avid Reader)",
+      "email": "reader@muktkavya.com",
+      "password": "$2a$10$ojOf0fPpgTUQuRMcqhNb/.znUEjfvw4JYgjfuKCm.ERIQMDY3iLBe",
+      "role": "reader",
+      "penName": "रसिक",
+      "bio": "Devoted reader and patron of classical and contemporary regional verses.",
+      "avatar": "",
+      "languages": [
+        "Hindi",
+        "English",
+        "Urdu",
+        "Gujarati"
+      ],
+      "socials": {},
+      "isVerified": true,
+      "createdAt": "2026-10-02T15:12:14.127Z",
+      "updatedAt": "2026-10-02T15:12:14.127Z"
+    }
+  ],
+  "kavitas": [
+    {
+      "_id": "ecja61cumur3qbsh",
+      "title": "रश्मिरथी: तृतीय सर्ग - कृष्ण की चेतावनी",
+      "subtitle": "जब नाश मनुज पर छाता है, पहले विवेक मर जाता है",
+      "content": "वर्षों तक वन में घूम-घूम,\nबाधा-विघ्नों को चूम-चूम,\nसह धूप-घाम, पानी-पत्थर,\nपांडव आये कुछ और निखर।\nसौभाग्य न सब दिन सोता है,\nदेखें, आगे क्या होता है।\n\nमैत्री की राह बताने को,\nसबको सुमार्ग पर लाने को,\nदुर्योधन को समझाने को,\nभीषण विध्वंस बचाने को,\nभगवान हस्तिनापुर आये,\nपांडव का संदेशा लाये।\n\n'दो न्याय अगर तो आधा दो,\nपर, इसमें भी यदि बाधा हो,\nतो दे दो केवल पाँच ग्राम,\nरक्खो अपनी धरती तमाम।\nहम वहीं खुशी से खायेंगे,\nपरिजन पर असि न उठायेंगे।'\n\nदुर्योधन वह भी दे न सका,\nआशीष समाज की ले न सका,\nउलटे, हरि को बाँधने चला,\nजो था असाध्य, साधने चला।\nजब नाश मनुज पर छाता है,\nपहले विवेक मर जाता है।\n\nहरि ने भीषण हुंकार किया,\nअपना स्वरूप-विस्तार किया,\nडगमग-डगमग दिग्गज डोले,\nभगवान कुपित होकर बोले-\n'जंजीर बढ़ा कर साध मुझे,\nहाँ, हाँ दुर्योधन! बाँध मुझे।",
+      "stanzas": [
+        {
+          "stanzaNumber": 1,
+          "lines": [
+            "वर्षों तक वन में घूम-घूम,",
+            "बाधा-विघ्नों को चूम-चूम,",
+            "सह धूप-घाम, पानी-पत्थर,",
+            "पांडव आये कुछ और निखर।",
+            "सौभाग्य न सब दिन सोता है,",
+            "देखें, आगे क्या होता है।"
+          ]
+        },
+        {
+          "stanzaNumber": 2,
+          "lines": [
+            "मैत्री की राह बताने को,",
+            "सबको सुमार्ग पर लाने को,",
+            "दुर्योधन को समझाने को,",
+            "भीषण विध्वंस बचाने को,",
+            "भगवान हस्तिनापुर आये,",
+            "पांडव का संदेशा लाये।"
+          ]
+        },
+        {
+          "stanzaNumber": 3,
+          "lines": [
+            "'दो न्याय अगर तो आधा दो,",
+            "पर, इसमें भी यदि बाधा हो,",
+            "तो दे दो केवल पाँच ग्राम,",
+            "रक्खो अपनी धरती तमाम।",
+            "हम वहीं खुशी से खायेंगे,",
+            "परिजन पर असि न उठायेंगे।'"
+          ]
+        },
+        {
+          "stanzaNumber": 4,
+          "lines": [
+            "दुर्योधन वह भी दे न सका,",
+            "आशीष समाज की ले न सका,",
+            "उलटे, हरि को बाँधने चला,",
+            "जो था असाध्य, साधने चला।",
+            "जब नाश मनुज पर छाता है,",
+            "पहले विवेक मर जाता है।"
+          ]
+        },
+        {
+          "stanzaNumber": 5,
+          "lines": [
+            "हरि ने भीषण हुंकार किया,",
+            "अपना स्वरूप-विस्तार किया,",
+            "डगमग-डगमग दिग्गज डोले,",
+            "भगवान कुपित होकर बोले-",
+            "'जंजीर बढ़ा कर साध मुझे,",
+            "हाँ, हाँ दुर्योधन! बाँध मुझे।"
+          ]
+        }
+      ],
+      "language": "Hindi",
+      "rasa": "Veer (Heroic/Valor)",
+      "form": "Chhand / Matrik",
+      "theme": "royal-velvet",
+      "fontFamily": "Rozha One, Tiro Devanagari Hindi, serif",
+      "author": "82t61it4mur3qbhk",
+      "authorName": "रामधारी सिंह \"दिनकर\"",
+      "penName": "दिनकर",
+      "status": "featured",
+      "tags": [
+        "Rashmirathi",
+        "Mahabharat",
+        "Krishna",
+        "Veer Rasa",
+        "National Poem"
+      ],
+      "audioUrl": "",
+      "likesCount": 389,
+      "viewsCount": 1420,
+      "bookmarksCount": 0,
+      "sharesCount": 0,
+      "isFeatured": true,
+      "featuredAt": "2026-10-02T15:12:14.127Z",
+      "createdAt": "2026-10-02T15:12:14.129Z",
+      "updatedAt": "2026-10-02T15:12:14.129Z"
+    },
+    {
+      "_id": "hqykaja4mur3qbsk",
+      "title": "दिल-ए-नादाँ तुझे हुआ क्या है",
+      "subtitle": "आख़िर इस दर्द की दवा क्या है",
+      "content": "दिल-ए-नादाँ तुझे हुआ क्या है?\nआख़िर इस दर्द की दवा क्या है?\n\nहम हैं मुश्ताक़ और वो बेज़ार\nया इलाही ये माजरा क्या है?\n\nमैं भी मुँह में ज़बान रखता हूँ\nकाश पूछो कि मुद्दआ क्या है?\n\nजब कि तुझ बिन नहीं कोई मौजूद\nफिर ये हंगामा, ऐ ख़ुदा क्या है?\n\nहम को उन से वफ़ा की है उम्मीद\nजो नहीं जानते वफ़ा क्या है?\n\nहाँ भला कर तिरा भला होगा\nऔर दरवेश की सदा क्या है?\n\nजाँ तुम पर निसार करता हूँ\nमैं नहीं जानता दुआ क्या है?\n\nमैंने माना कि कुछ नहीं 'ग़ालिब'\nमुफ़्त हाथ आये तो बुरा क्या है?",
+      "stanzas": [
+        {
+          "stanzaNumber": 1,
+          "lines": [
+            "दिल-ए-नादाँ तुझे हुआ क्या है?",
+            "आख़िर इस दर्द की दवा क्या है?"
+          ]
+        },
+        {
+          "stanzaNumber": 2,
+          "lines": [
+            "हम हैं मुश्ताक़ और वो बेज़ार",
+            "या इलाही ये माजरा क्या है?"
+          ]
+        },
+        {
+          "stanzaNumber": 3,
+          "lines": [
+            "मैं भी मुँह में ज़बान रखता हूँ",
+            "काश पूछो कि मुद्दआ क्या है?"
+          ]
+        },
+        {
+          "stanzaNumber": 4,
+          "lines": [
+            "हम को उन से वफ़ा की है उम्मीद",
+            "जो नहीं जानते वफ़ा क्या है?"
+          ]
+        },
+        {
+          "stanzaNumber": 5,
+          "lines": [
+            "मैंने माना कि कुछ नहीं 'ग़ालिब'",
+            "मुफ़्त हाथ आये तो बुरा क्या है?"
+          ]
+        }
+      ],
+      "language": "Urdu",
+      "rasa": "Karun (Pathos/Compassion)",
+      "form": "Ghazal (Couplets/Sher)",
+      "theme": "midnight-cosmos",
+      "fontFamily": "Rozha One, Tiro Devanagari Hindi, serif",
+      "author": "rk2yigswmur3qbj4",
+      "authorName": "मिर्ज़ा असदुल्लाह ख़ाँ \"ग़ालिब\"",
+      "penName": "ग़ालिब",
+      "status": "published",
+      "tags": [
+        "Ghazal",
+        "Ghalib",
+        "Dard",
+        "Ishq",
+        "Sufiana"
+      ],
+      "audioUrl": "",
+      "likesCount": 260,
+      "viewsCount": 980,
+      "bookmarksCount": 0,
+      "sharesCount": 0,
+      "isFeatured": false,
+      "featuredAt": null,
+      "createdAt": "2026-10-02T15:12:14.132Z",
+      "updatedAt": "2026-10-02T15:12:14.132Z"
+    },
+    {
+      "_id": "8ewbpx2tmur3qbsl",
+      "title": "चित्त जेथा भयशून्य (Where the Mind is Without Fear)",
+      "subtitle": "गीतांजलि - ३५ (Gitanjali Verse XXXV)",
+      "content": "চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির,\nজ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর\nআপন প্রাঙ্গণমাঝে দিবসশর্বরী\nবসুধারে রাখে নাই খণ্ড ক্ষুদ্র করি,\n\nযেথা বাক্য হৃদয়ের উৎসমুখ হতে\nউচ্ছ্বসিয়া উঠে, যেথা নির্বারিত স্রোতে\nদেশে দেশে দিশে দিশে কর্মধারা ধায়\nঅজস্র সহস্রবিধ চরিতার্থতায়,\n\nযেথা তুচ্ছ আচারের মরুবালুরাশি\nবিচারের স্রোতোপথ ফেলে নাই গ্রাসি,\nপৌরুষেরে করে নি শতধা; নিত্য যেথা\nতুমি সর্ব কর্ম চিন্তা আনন্দের নেতা—\n\nনিজ হস্তে নির্দয় আঘাত করি পিতঃ,\nভারতেরে সেই স্বর্গে করো জাগরিত।",
+      "stanzas": [
+        {
+          "stanzaNumber": 1,
+          "lines": [
+            "চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির,",
+            "জ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর",
+            "আপন প্রাঙ্গণমাঝে দিবসশর্বরী",
+            "বসুধারে রাখে নাই খণ্ড ক্ষুদ্র করি,"
+          ]
+        },
+        {
+          "stanzaNumber": 2,
+          "lines": [
+            "যেথা বাক্য হৃদয়ের উৎসমুখ হতে",
+            "উচ্ছ্বসিয়া উঠে, যেথা নির্বারিত স্রোতে",
+            "দেশে দেশে দিশে দিশে কর্মধারা ধায়",
+            "অজস্র সহস্রবিধ চরিতার্থতায়,"
+          ]
+        },
+        {
+          "stanzaNumber": 3,
+          "lines": [
+            "নিজ হস্তে নির্দয় আঘাত করি পিতঃ,",
+            "ভারতেরে সেই স্বর্গে করো জাগরিত।"
+          ]
+        }
+      ],
+      "language": "Bengali",
+      "rasa": "Shant (Peace/Serenity)",
+      "form": "Mukt Kavya (Free Verse)",
+      "theme": "golden-sunset",
+      "fontFamily": "serif",
+      "author": "8pgv2cqjmur3qbko",
+      "authorName": "रवींद्रनाथ ठाकुर (Rabindranath Tagore)",
+      "penName": "भानुसिंह",
+      "status": "published",
+      "tags": [
+        "Gitanjali",
+        "Tagore",
+        "Bengali Poetry",
+        "Freedom",
+        "Nobel"
+      ],
+      "audioUrl": "",
+      "likesCount": 310,
+      "viewsCount": 850,
+      "bookmarksCount": 0,
+      "sharesCount": 0,
+      "isFeatured": true,
+      "featuredAt": "2026-10-02T15:12:14.132Z",
+      "createdAt": "2026-10-02T15:12:14.133Z",
+      "updatedAt": "2026-10-02T15:12:14.133Z"
+    },
+    {
+      "_id": "f50b7n87mur3qbsn",
+      "title": "રે પંખીડાં સુખેથી ચણજો",
+      "subtitle": "ગીત ગાજો કાંઈ હર્ષનાં - કલાપીનો કેકારવ",
+      "content": "રે પંખીડાં સુખેથી ચણજો ગીત ગાજો કાંઈ હર્ષનાં,\nઆંહીં કોઈ નથી મારવા તમને, ના ડરો તમે લેશ ના!\n\nછે વૃક્ષ આ લીલાંછમ શીતળ છાયા આપતાં,\nમીઠાં મધુર જળ સરિતા વહી વહીને જતાં.\nનથી પાપ અહીં કોઈના હૈયે, વસો પ્રેમથી સૌ સદા,\nપ્રેમનું જ આ વિશ્વ આખું, પ્રભુની અનંત કૃપા!",
+      "stanzas": [
+        {
+          "stanzaNumber": 1,
+          "lines": [
+            "રે પંખીડાં સુખેથી ચણજો ગીત ગાજો કાંઈ હર્ષનાં,",
+            "આંહીં કોઈ નથી મારવા તમને, ના ડરો તમે લેશ ના!"
+          ]
+        },
+        {
+          "stanzaNumber": 2,
+          "lines": [
+            "છે વૃક્ષ આ લીલાંછમ શીતળ છાયા આપતાં,",
+            "મીઠાં મધુર જળ સરિતા વહી વહીને જતાં.",
+            "નથી પાપ અહીં કોઈના હૈયે, વસો પ્રેમથી સૌ સદા,",
+            "પ્રેમનું જ આ વિશ્વ આખું, પ્રભુની અનંત કૃપા!"
+          ]
+        }
+      ],
+      "language": "Gujarati",
+      "rasa": "Shant (Peace/Serenity)",
+      "form": "Geet (Lyrical Poem)",
+      "theme": "emerald-forest",
+      "fontFamily": "serif",
+      "author": "9rpug49xmur3qbm9",
+      "authorName": "कवि कलापी (Sursinhji Takhtasinhji)",
+      "penName": "कलापी",
+      "status": "published",
+      "tags": [
+        "Kalapi",
+        "Gujarati Kavita",
+        "Nature",
+        "Bird Song",
+        "Kekarav"
+      ],
+      "audioUrl": "",
+      "likesCount": 195,
+      "viewsCount": 620,
+      "bookmarksCount": 0,
+      "sharesCount": 0,
+      "isFeatured": false,
+      "featuredAt": null,
+      "createdAt": "2026-10-02T15:12:14.135Z",
+      "updatedAt": "2026-10-02T15:12:14.135Z"
+    },
+    {
+      "_id": "x0h4h57ymur3qbsp",
+      "title": "अरे संसार संसार",
+      "subtitle": "जसा तवा चुल्ह्यावर, आधी हाताले चटके तव्हा मिळते भाकर",
+      "content": "अरे संसार संसार, जसा तवा चुल्ह्यावर\nआधी हाताले चटके, तव्हा मिळते भाकर!\n\nअरे संसार संसार, खोटा कधी म्हणू नाही\nराऊळाच्या कळसाले, लोटा कधी म्हणू नाही.\n\nदेखा आल्या पावसाच्या, कशा धारावर धारा\nरानपाखरांचा कसा, सुरु झाला रे पिसारा!",
+      "stanzas": [
+        {
+          "stanzaNumber": 1,
+          "lines": [
+            "अरे संसार संसार, जसा तवा चुल्ह्यावर",
+            "आधी हाताले चटके, तव्हा मिळते भाकर!"
+          ]
+        },
+        {
+          "stanzaNumber": 2,
+          "lines": [
+            "अरे संसार संसार, खोटा कधी म्हणू नाही",
+            "राऊळाच्या कळसाले, लोटा कधी म्हणू नाही."
+          ]
+        },
+        {
+          "stanzaNumber": 3,
+          "lines": [
+            "देखा आल्या पावसाच्या, कशा धारावर धारा",
+            "रानपाखरांचा कसा, सुरु झाला रे पिसारा!"
+          ]
+        }
+      ],
+      "language": "Marathi",
+      "rasa": "Karun (Pathos/Compassion)",
+      "form": "Dohe (Couplets)",
+      "theme": "vintage-parchment",
+      "fontFamily": "serif",
+      "author": "2ulh0vzpmur3qbns",
+      "authorName": "बहिणाबाई चौधरी (Bahinabai Chaudhari)",
+      "penName": "बहिणा",
+      "status": "published",
+      "tags": [
+        "Bahinabai",
+        "Marathi Kavita",
+        "Life Wisdom",
+        "Sansar"
+      ],
+      "audioUrl": "",
+      "likesCount": 220,
+      "viewsCount": 710,
+      "bookmarksCount": 0,
+      "sharesCount": 0,
+      "isFeatured": false,
+      "featuredAt": null,
+      "createdAt": "2026-10-02T15:12:14.137Z",
+      "updatedAt": "2026-10-02T15:12:14.137Z"
+    },
+    {
+      "_id": "8urf6ybfmur3qbsq",
+      "title": "The Bangle Sellers",
+      "subtitle": "Lustrous tokens of radiant lives",
+      "content": "Bangle sellers are we who bear\nOur shining loads to the temple fair...\nWho will buy these delicate, bright\nRainbow-tinted circles of light?\nLustrous tokens of radiant lives,\nFor happy daughters and happy wives.\n\nSome are meet for a maiden's wrist,\nSilver and blue as the mountain mist,\nSome are flushed like the buds that dream\nOn the tranquil brow of a woodland stream,\nSome are aglow with the bloom that cleaves\nTo the limpid glory of new born leaves.\n\nSome are purple and gold flecked grey\nFor she who has journeyed through life midway,\nWhose hands have cherished, whose love has blest,\nAnd cradled fair sons on her faithful breast,\nAnd serves her household in fruitful pride,\nAnd worships the gods at her husband's side.",
+      "stanzas": [
+        {
+          "stanzaNumber": 1,
+          "lines": [
+            "Bangle sellers are we who bear",
+            "Our shining loads to the temple fair...",
+            "Who will buy these delicate, bright",
+            "Rainbow-tinted circles of light?",
+            "Lustrous tokens of radiant lives,",
+            "For happy daughters and happy wives."
+          ]
+        },
+        {
+          "stanzaNumber": 2,
+          "lines": [
+            "Some are meet for a maiden's wrist,",
+            "Silver and blue as the mountain mist,",
+            "Some are flushed like the buds that dream",
+            "On the tranquil brow of a woodland stream,",
+            "Some are aglow with the bloom that cleaves",
+            "To the limpid glory of new born leaves."
+          ]
+        },
+        {
+          "stanzaNumber": 3,
+          "lines": [
+            "Some are purple and gold flecked grey",
+            "For she who has journeyed through life midway,",
+            "Whose hands have cherished, whose love has blest,",
+            "And cradled fair sons on her faithful breast,",
+            "And serves her household in fruitful pride,",
+            "And worships the gods at her husband's side."
+          ]
+        }
+      ],
+      "language": "English",
+      "rasa": "Shringar (Romance/Beauty)",
+      "form": "Geet (Lyrical Poem)",
+      "theme": "rose-saffron",
+      "fontFamily": "serif",
+      "author": "4fgqxj2imur3qbpe",
+      "authorName": "Sarojini Naidu",
+      "penName": "The Nightingale of India",
+      "status": "published",
+      "tags": [
+        "Indian English Verse",
+        "Sarojini Naidu",
+        "Bangles",
+        "Folk Tradition"
+      ],
+      "audioUrl": "",
+      "likesCount": 168,
+      "viewsCount": 540,
+      "bookmarksCount": 0,
+      "sharesCount": 0,
+      "isFeatured": false,
+      "featuredAt": null,
+      "createdAt": "2026-10-02T15:12:14.138Z",
+      "updatedAt": "2026-10-02T15:12:14.138Z"
+    }
+  ],
+  "comments": [
+    {
+      "_id": "nm4raorkmur3qbsr",
+      "kavita": "ecja61cumur3qbsh",
+      "user": "fnxuzzn6mur3qbqx",
+      "userName": "काव्य रसिक (Avid Reader)",
+      "userRole": "reader",
+      "content": "दिनकर जी की यह पंक्तियाँ जब भी पढ़ता हूँ, रोंगटे खड़े हो जाते हैं! अद्भुत वीर रस का संचार!",
+      "createdAt": "2026-10-02T15:12:14.139Z"
+    },
+    {
+      "_id": "7o26d4p1mur3qbss",
+      "kavita": "hqykaja4mur3qbsk",
+      "user": "82t61it4mur3qbhk",
+      "userName": "रामधारी सिंह \"दिनकर\"",
+      "userRole": "writer",
+      "content": "ग़ालिब की सादगी और गहराई का कोई सानी नहीं है।",
+      "createdAt": "2026-10-02T15:12:14.140Z"
+    }
+  ]
+}
