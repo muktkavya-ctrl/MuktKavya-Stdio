@@ -19,9 +19,11 @@ import {
 import { exportKavitaToPdf, exportKavitaToImageCard, exportKavitaToText } from '../utils/pdfExport';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
   const { user, toggleFollowPoet } = useAuth();
+  const { isDark } = useTheme();
   const [activeTheme, setActiveTheme] = useState(kavita?.theme || 'vintage-parchment');
   const [fontSize, setFontSize] = useState(20);
   const [likes, setLikes] = useState(kavita?.likesCount || 0);
@@ -130,14 +132,38 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-slate-900 border border-[#d4af37]/40 rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
+      <div
+        className={`relative w-full max-w-4xl border rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden transition-colors duration-300 ${
+          isDark
+            ? 'bg-slate-900 border-[#d4af37]/40 shadow-black/80'
+            : 'bg-[#fffdfa] border-[#b8860b]/35 shadow-2xl text-stone-900'
+        }`}
+      >
         {/* Top Control Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-b border-slate-800 bg-slate-950/70">
+        <div
+          className={`flex flex-wrap items-center justify-between gap-2 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-b ${
+            isDark
+              ? 'border-slate-800 bg-slate-950/70'
+              : 'border-stone-200 bg-[#f7f1e6]'
+          }`}
+        >
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="text-[11px] sm:text-xs font-semibold text-[#f5e7a9] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-[#800020]/40 border border-[#d4af37]/30">
+            <span
+              className={`text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border ${
+                isDark
+                  ? 'bg-[#800020]/40 text-[#f5e7a9] border-[#d4af37]/30'
+                  : 'bg-rose-100 text-[#800020] border-rose-300'
+              }`}
+            >
               {kavita.language}
             </span>
-            <span className="text-[11px] sm:text-xs font-medium text-amber-300 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-amber-500/10 border border-amber-500/30">
+            <span
+              className={`text-[11px] sm:text-xs font-medium px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border ${
+                isDark
+                  ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+                  : 'bg-amber-100 text-amber-800 border-amber-300'
+              }`}
+            >
               {kavita.rasa}
             </span>
           </div>
@@ -145,15 +171,23 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
           {/* Theme & Font Customizers */}
           <div className="flex items-center gap-2 flex-wrap">
             {/* Theme Picker Dropdown */}
-            <div className="flex items-center gap-1.5 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700 text-xs">
+            <div
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs ${
+                isDark
+                  ? 'bg-slate-800/80 border-slate-700 text-slate-200'
+                  : 'bg-white border-stone-300 text-stone-800 shadow-sm'
+              }`}
+            >
               <Palette className="w-3.5 h-3.5 text-[#d4af37]" />
               <select
                 value={activeTheme}
                 onChange={(e) => setActiveTheme(e.target.value)}
-                className="bg-transparent text-slate-200 text-xs focus:outline-none cursor-pointer"
+                className={`bg-transparent text-xs focus:outline-none cursor-pointer ${
+                  isDark ? 'text-slate-200' : 'text-stone-800'
+                }`}
               >
                 {themeOptions.map((t) => (
-                  <option key={t.id} value={t.id} className="bg-slate-900 text-white">
+                  <option key={t.id} value={t.id} className={isDark ? 'bg-slate-900 text-white' : 'bg-white text-stone-900'}>
                     {t.name}
                   </option>
                 ))}
@@ -161,19 +195,25 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
             </div>
 
             {/* Font Size Adjuster */}
-            <div className="flex items-center gap-1 bg-slate-800/80 px-2 py-1 rounded-lg border border-slate-700 text-xs text-slate-300">
-              <Type className="w-3.5 h-3.5 text-slate-400" />
+            <div
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-xs ${
+                isDark
+                  ? 'bg-slate-800/80 border-slate-700 text-slate-300'
+                  : 'bg-white border-stone-300 text-stone-700 shadow-sm'
+              }`}
+            >
+              <Type className="w-3.5 h-3.5 opacity-60" />
               <button
                 onClick={() => setFontSize(Math.max(16, fontSize - 2))}
-                className="px-1.5 hover:text-white font-bold"
+                className="px-1.5 hover:text-amber-500 font-bold cursor-pointer"
                 title="Decrease font size"
               >
                 A-
               </button>
-              <span className="text-[11px] text-slate-400">{fontSize}px</span>
+              <span className="text-[11px] opacity-75">{fontSize}px</span>
               <button
                 onClick={() => setFontSize(Math.min(28, fontSize + 2))}
-                className="px-1.5 hover:text-white font-bold"
+                className="px-1.5 hover:text-amber-500 font-bold cursor-pointer"
                 title="Increase font size"
               >
                 A+
@@ -183,16 +223,22 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
             {/* Audio Recitation Sim */}
             <button
               onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-              className={`p-1.5 rounded-lg border text-xs flex items-center gap-1 transition-colors ${
+              className={`p-1.5 px-2.5 rounded-lg border text-xs flex items-center gap-1.5 transition-colors cursor-pointer ${
                 isPlayingAudio
                   ? 'bg-amber-500/20 text-[#d4af37] border-[#d4af37]'
-                  : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:text-white'
+                  : isDark
+                  ? 'bg-slate-800/80 border-slate-700 text-slate-300 hover:text-white'
+                  : 'bg-white border-stone-300 text-stone-700 hover:text-stone-900 shadow-sm'
               }`}
               title="Ambient Recitation"
             >
               {isPlayingAudio ? (
                 <>
-                  <Volume2 className="w-4 h-4 text-[#d4af37] animate-pulse" />
+                  <span className="audio-equalizer">
+                    <span className="audio-bar" />
+                    <span className="audio-bar" />
+                    <span className="audio-bar" />
+                  </span>
                   <span className="hidden sm:inline">Playing</span>
                 </>
               ) : (
@@ -206,7 +252,11 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors ml-2"
+              className={`p-1.5 rounded-lg transition-colors ml-2 cursor-pointer ${
+                isDark
+                  ? 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
+                  : 'bg-stone-200 text-stone-600 hover:text-stone-900 hover:bg-stone-300'
+              }`}
             >
               <X className="w-5 h-5" />
             </button>
@@ -355,8 +405,16 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
           </div>
 
           {/* Reader Reflections & Comments Section */}
-          <div className="max-w-2xl mx-auto mt-8 pt-6 border-t border-slate-800">
-            <h3 className="text-base font-bold text-slate-200 mb-4 flex items-center gap-2 font-['Rozha_One']">
+          <div
+            className={`max-w-2xl mx-auto mt-8 pt-6 border-t ${
+              isDark ? 'border-slate-800' : 'border-stone-200'
+            }`}
+          >
+            <h3
+              className={`text-base font-bold mb-4 flex items-center gap-2 font-['Rozha_One'] ${
+                isDark ? 'text-slate-200' : 'text-[#800020]'
+              }`}
+            >
               <MessageSquare className="w-4 h-4 text-[#d4af37]" />
               पाठकों की प्रतिक्रियाएँ (Reader Reflections) ({comments.length})
             </h3>
@@ -374,12 +432,16 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
                   }
                   rows={2}
                   disabled={!user}
-                  className="w-full bg-slate-950/80 border border-slate-700 rounded-xl p-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#d4af37] resize-none"
+                  className={`w-full rounded-xl p-3 text-sm resize-none focus:outline-none focus:border-[#d4af37] border transition-colors ${
+                    isDark
+                      ? 'bg-slate-950/80 border-slate-700 text-slate-100 placeholder-slate-500'
+                      : 'bg-white border-stone-300 text-stone-900 placeholder-stone-400 shadow-inner'
+                  }`}
                 />
                 <button
                   type="submit"
                   disabled={!user || isSubmittingComment || !newComment.trim()}
-                  className="absolute bottom-2.5 right-2.5 px-3 py-1 bg-[#d4af37] hover:bg-[#f5e7a9] text-slate-950 text-xs font-bold rounded-lg flex items-center gap-1 disabled:opacity-40 transition-colors"
+                  className="absolute bottom-2.5 right-2.5 px-3 py-1 bg-[#d4af37] hover:bg-[#f5e7a9] text-slate-950 text-xs font-bold rounded-lg flex items-center gap-1 disabled:opacity-40 transition-colors cursor-pointer"
                 >
                   <Send className="w-3 h-3" />
                   Post
@@ -390,14 +452,31 @@ export const PoemReaderModal = ({ kavita, onClose, onOpenAuthModal }) => {
             {/* Comments List */}
             <div className="space-y-3">
               {comments.map((c) => (
-                <div key={c._id} className="p-3.5 rounded-xl bg-slate-950/40 border border-slate-800">
+                <div
+                  key={c._id}
+                  className={`p-3.5 rounded-xl border transition-colors ${
+                    isDark
+                      ? 'bg-slate-950/40 border-slate-800'
+                      : 'bg-stone-50 border-stone-200 shadow-sm'
+                  }`}
+                >
                   <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-[#f5e7a9]">{c.userName}</span>
-                    <span className="text-slate-500 text-[10px]">
+                    <span
+                      className={`font-semibold ${
+                        isDark ? 'text-[#f5e7a9]' : 'text-[#800020]'
+                      }`}
+                    >
+                      {c.userName}
+                    </span>
+                    <span className={isDark ? 'text-slate-500 text-[10px]' : 'text-stone-400 text-[10px]'}>
                       {new Date(c.createdAt).toLocaleDateString()}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 font-['Tiro_Devanagari_Hindi'] leading-relaxed">
+                  <p
+                    className={`text-xs font-['Tiro_Devanagari_Hindi'] leading-relaxed ${
+                      isDark ? 'text-slate-300' : 'text-stone-700'
+                    }`}
+                  >
                     {c.content}
                   </p>
                 </div>

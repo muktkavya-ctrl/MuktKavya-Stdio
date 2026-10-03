@@ -19,10 +19,36 @@ import confetti from 'canvas-confetti';
 import { api } from '../services/api';
 import { exportKavitaToPdf } from '../utils/pdfExport';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 export const PoetStudio = ({ onPublishSuccess, editingPoem = null }) => {
   const { user, isSuperAdmin } = useAuth();
+  const { isDark } = useTheme();
 
+  // Unauthenticated Guard: Studio is strictly for logged-in users
+  if (!user) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 py-20 text-center animate-fade-in font-['Outfit']">
+        <div className="glass-panel p-8 sm:p-12 border border-[#d4af37]/40 max-w-xl mx-auto rounded-3xl shadow-2xl">
+          <div className="w-16 h-16 rounded-2xl bg-[#800020]/25 text-[#ffd700] flex items-center justify-center mx-auto mb-4 border border-[#d4af37]/40 animate-pulse-glow">
+            <Lock className="w-8 h-8 text-[#ffd700]" />
+          </div>
+          <h2 className="text-2xl font-bold font-['Rozha_One'] text-white dark:text-white mb-2">
+            प्रवेश आवश्यक (Sign In Required)
+          </h2>
+          <p className="text-sm text-slate-300 dark:text-slate-300 mb-6 leading-relaxed">
+            रचना कक्ष (Poet's Studio) केवल पंजीकृत रचनाकारों के लिए उपलब्ध है। कृपया अपनी कविताएँ लिखने एवं प्रकाशित करने के लिए प्रवेश करें।
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="btn-royal text-xs py-2.5 px-6 font-bold"
+          >
+            Sign In to Access Studio
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   // Restricted Creator Guard: Creator suspended from submitting
   if (user?.isRestricted) {
@@ -406,10 +432,14 @@ export const PoetStudio = ({ onPublishSuccess, editingPoem = null }) => {
                   key={t.id}
                   type="button"
                   onClick={() => setTheme(t.id)}
-                  className={`p-2.5 rounded-xl border text-xs text-left transition-all flex items-center justify-between ${
+                  className={`p-2.5 rounded-xl border text-xs text-left transition-all flex items-center justify-between cursor-pointer ${
                     theme === t.id
-                      ? 'border-[#d4af37] bg-[#d4af37]/15 text-[#f5e7a9] font-bold shadow-md'
-                      : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:border-slate-700'
+                      ? isDark
+                        ? 'border-[#d4af37] bg-[#d4af37]/25 text-[#ffd700] font-bold shadow-md'
+                        : 'border-[#b8860b] bg-amber-100/90 text-amber-950 font-bold shadow-md'
+                      : isDark
+                      ? 'border-slate-800 bg-slate-950/60 text-slate-400 hover:border-slate-700'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-amber-400 shadow-sm'
                   }`}
                 >
                   <span className="truncate">{t.name}</span>
@@ -514,7 +544,7 @@ export const PoetStudio = ({ onPublishSuccess, editingPoem = null }) => {
 
             {subtitle && <p className="kavita-subtitle text-xs sm:text-sm">— {subtitle} —</p>}
 
-            <div className="my-6 text-center font-['Tiro_Devanagari_Hindi'] text-base leading-relaxed whitespace-pre-line">
+            <div className="my-6 text-center font-['Tiro_Devanagari_Hindi'] text-base leading-relaxed whitespace-pre-line kavita-stanza kavita-body">
               {content || 'यहाँ आपकी कविता का प्रवाह जीवंत रूप में प्रकट होगा...'}
             </div>
 

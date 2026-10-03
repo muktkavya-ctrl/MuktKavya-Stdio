@@ -102,40 +102,35 @@ export const Navbar = ({ activeTab, setActiveTab, selectedLang, setSelectedLang 
             <span>Daily</span>
           </button>
 
-          <button
-            onClick={() => {
-              if (!user) {
-                setActiveTab('login');
-                return;
-              }
-              setActiveTab('studio');
-            }}
-            className={`nav-tab-link ${activeTab === 'studio' ? 'active' : ''}`}
-            title="Write & Compose Verses"
-          >
-            <PenTool className="w-3.5 h-3.5 text-[#d4af37]" />
-            <span>Studio</span>
-          </button>
+          {/* Only shown after login */}
+          {user && isWriter && (
+            <button
+              onClick={() => setActiveTab('studio')}
+              className={`nav-tab-link ${activeTab === 'studio' ? 'active' : ''} animate-scale-pop`}
+              title="Write & Compose Verses in Poet's Studio"
+            >
+              <PenTool className="w-3.5 h-3.5 text-[#d4af37]" />
+              <span>Studio</span>
+            </button>
+          )}
 
-          <button
-            onClick={() => {
-              if (!user) {
-                setActiveTab('login');
-                return;
-              }
-              setActiveTab('my-kavitas');
-            }}
-            className={`nav-tab-link ${activeTab === 'my-kavitas' || activeTab === 'dashboard' ? 'active' : ''}`}
-            title="My Kavitas (मेरी कविताएं) — Search, Edit, Hide/Show, Views & Diwan"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="font-semibold">My Kavitas</span>
-          </button>
+          {/* Only shown after login */}
+          {user && (
+            <button
+              onClick={() => setActiveTab('my-kavitas')}
+              className={`nav-tab-link ${activeTab === 'my-kavitas' || activeTab === 'dashboard' ? 'active' : ''} animate-scale-pop`}
+              title="My Kavitas (मेरी कविताएं) — Search, Edit, Hide/Show, Views & Diwan"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="font-semibold">My Kavitas</span>
+            </button>
+          )}
 
-          {isAdmin && (
+          {/* Only shown for admin */}
+          {user && isAdmin && (
             <button
               onClick={() => setActiveTab('admin')}
-              className={`nav-tab-link ${activeTab === 'admin' ? 'active' : ''}`}
+              className={`nav-tab-link ${activeTab === 'admin' ? 'active' : ''} animate-scale-pop`}
               title="Super Admin Governance & Heritage Vault"
             >
               <ShieldAlert className="w-3.5 h-3.5 text-[#ffd700]" />

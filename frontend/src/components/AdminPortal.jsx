@@ -1698,6 +1698,7 @@ export const AdminPortal = () => {
                   onChange={(e) => setTelemetrySearch(e.target.value)}
                   placeholder="Filter by IP, City, User, Poem..."
                   className="form-control text-xs pl-9"
+                  style={{ paddingLeft: 38 }}
                 />
               </div>
 

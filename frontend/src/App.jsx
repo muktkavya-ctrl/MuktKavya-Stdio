@@ -30,6 +30,7 @@ import {
   Globe,
   Compass,
   X,
+  User,
 } from 'lucide-react';
 
 export const INDIAN_REGIONS = [
@@ -66,7 +67,12 @@ const MainApp = () => {
   // Comprehensive protection against blank screen & smooth auth redirects:
   useEffect(() => {
     if (!user) {
-      if (activeTab === 'admin' || activeTab === 'dashboard' || activeTab === 'studio') {
+      if (
+        activeTab === 'admin' ||
+        activeTab === 'dashboard' ||
+        activeTab === 'studio' ||
+        activeTab === 'my-kavitas'
+      ) {
         setActiveTab('explore');
       }
     } else {
@@ -207,7 +213,7 @@ const MainApp = () => {
         setSelectedLang={setSelectedLang}
       />
 
-      <main className="flex-1">
+      <main className="flex-1 w-full" style={{ minHeight: '65vh' }}>
         {/* TAB 1: EXPLORE VERSES */}
         {activeTab === 'explore' && (
           <div>
@@ -250,76 +256,100 @@ const MainApp = () => {
               </div>
             )}
 
-            {/* Unified Master Exploration Hub (Zero Clutter, Ultra-Premium) */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-              <div className="p-3.5 sm:p-5 rounded-3xl border border-[#d4af37]/35 bg-gradient-to-r from-slate-900/95 via-[#130d1e]/90 to-slate-950/95 shadow-2xl backdrop-blur-md space-y-4">
-                {/* Row 1: Primary Stream Recommendations + Sort Trigger */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
-                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-xs w-full lg:w-auto">
-                    {/* Stream 1: Curated Recommendations */}
+            {/* Unified Master Exploration Hub (Compact, balanced, and single-line on desktop) */}
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 mb-8 animate-slide-up-smooth">
+              <div
+                className={`exploration-hub-container p-2.5 sm:p-3 lg:py-2.5 lg:px-4 rounded-2xl lg:rounded-2xl border shadow-xl backdrop-blur-md transition-all duration-300 ${
+                  isDark
+                    ? 'border-[#d4af37]/35 bg-gradient-to-r from-slate-900/95 via-[#130d1e]/90 to-slate-950/95 text-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.35)]'
+                    : 'border-amber-900/20 bg-gradient-to-r from-white via-[#fcf8f0] to-[#f9f2e4] text-stone-900 shadow-[0_4px_20px_rgba(184,134,11,0.08)]'
+                }`}
+              >
+                {/* Left Section: Primary Stream Pills (Horizontal scroll on mobile, inline on desktop) */}
+                <div className="exploration-stream-track">
+                  {/* Stream 1: Curated Recommendations */}
+                  <button
+                    onClick={() => handleSelectCategory('recommended')}
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-xl font-semibold transition-all flex items-center gap-1.5 border cursor-pointer text-xs btn-hover-shimmer shrink-0 whitespace-nowrap ${
+                      feedCategory === 'recommended' || feedCategory === 'region'
+                        ? 'bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-slate-950 border-[#ffd700] font-bold shadow-md'
+                        : isDark
+                        ? 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80 hover:bg-slate-800'
+                        : 'bg-white text-stone-700 hover:text-stone-950 border-stone-300 hover:bg-amber-50/80 shadow-sm'
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-amber-950 fill-amber-950/20" />
+                    <span>
+                      ✨ अनुशंसित <span className="hidden xl:inline">(Recommended)</span>
+                    </span>
+                  </button>
+
+                  {/* Stream 2: Trending / Most Appreciated */}
+                  <button
+                    onClick={() => handleSelectCategory('likes')}
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-xl font-semibold transition-all flex items-center gap-1.5 border cursor-pointer text-xs btn-hover-shimmer shrink-0 whitespace-nowrap ${
+                      feedCategory === 'likes'
+                        ? 'bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-slate-950 border-[#ffd700] font-bold shadow-md'
+                        : isDark
+                        ? 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80 hover:bg-slate-800'
+                        : 'bg-white text-stone-700 hover:text-stone-950 border-stone-300 hover:bg-amber-50/80 shadow-sm'
+                    }`}
+                  >
+                    <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500/20" />
+                    <span>
+                      सर्वाधिक प्रशंसित <span className="hidden xl:inline">(Popular)</span>
+                    </span>
+                  </button>
+
+                  {/* Stream 3: All Classical Traditions */}
+                  <button
+                    onClick={() => handleSelectCategory('all')}
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-xl font-semibold transition-all flex items-center gap-1.5 border cursor-pointer text-xs btn-hover-shimmer shrink-0 whitespace-nowrap ${
+                      feedCategory === 'all'
+                        ? 'bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-slate-950 border-[#ffd700] font-bold shadow-md'
+                        : isDark
+                        ? 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80 hover:bg-slate-800'
+                        : 'bg-white text-stone-700 hover:text-stone-950 border-stone-300 hover:bg-amber-50/80 shadow-sm'
+                    }`}
+                  >
+                    <Globe className="w-3.5 h-3.5 text-sky-500" />
+                    <span>
+                      समस्त काव्य <span className="hidden xl:inline">परंपरा</span>
+                    </span>
+                  </button>
+
+                  {/* Following Stream (if user is logged in) */}
+                  {user && (
                     <button
-                      onClick={() => handleSelectCategory('recommended')}
-                      className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-semibold transition-all flex items-center gap-1.5 border cursor-pointer text-xs ${
-                        feedCategory === 'recommended' || feedCategory === 'region'
-                          ? 'bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-slate-950 border-[#ffd700] font-bold shadow-md'
-                          : 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80 hover:bg-slate-800'
+                      onClick={() => setFilterFollowingOnly(!filterFollowingOnly)}
+                      className={`px-3 sm:px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 border text-xs cursor-pointer shrink-0 whitespace-nowrap ${
+                        filterFollowingOnly
+                          ? 'bg-sky-500 text-white font-bold border-sky-400 shadow-md'
+                          : isDark
+                          ? 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80'
+                          : 'bg-white text-stone-700 hover:text-stone-900 border-stone-300 shadow-sm'
                       }`}
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-amber-950 fill-amber-950/20" />
-                      <span>✨ अनुशंसित <span className="hidden sm:inline">(Recommended)</span></span>
+                      <Users className="w-3.5 h-3.5 text-sky-500" />
+                      <span>Following ({user.following?.length || 0})</span>
                     </button>
+                  )}
+                </div>
 
-                    {/* Stream 2: Trending / Most Appreciated */}
-                    <button
-                      onClick={() => handleSelectCategory('likes')}
-                      className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-semibold transition-all flex items-center gap-1.5 border cursor-pointer text-xs ${
-                        feedCategory === 'likes'
-                          ? 'bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-slate-950 border-[#ffd700] font-bold shadow-md'
-                          : 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80 hover:bg-slate-800'
-                      }`}
-                    >
-                      <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-500/20" />
-                      <span>सर्वाधिक प्रशंसित <span className="hidden sm:inline">(Most Appreciated)</span></span>
-                    </button>
+                {/* Subtle Divider (Desktop only) */}
+                <div className="exploration-divider" />
 
-                    {/* Stream 3: All Classical Traditions */}
-                    <button
-                      onClick={() => handleSelectCategory('all')}
-                      className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-semibold transition-all flex items-center gap-1.5 border cursor-pointer text-xs ${
-                        feedCategory === 'all'
-                          ? 'bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-slate-950 border-[#ffd700] font-bold shadow-md'
-                          : 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80 hover:bg-slate-800'
-                      }`}
-                    >
-                      <Globe className="w-3.5 h-3.5 text-sky-400" />
-                      <span>समस्त काव्य <span className="hidden sm:inline">परंपरा (All)</span></span>
-                    </button>
-
-                    {/* Following Stream (if user is logged in) */}
-                    {user && (
-                      <button
-                        onClick={() => setFilterFollowingOnly(!filterFollowingOnly)}
-                        className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl transition-all flex items-center gap-1.5 border text-xs cursor-pointer ${
-                          filterFollowingOnly
-                            ? 'bg-sky-500 text-white font-bold border-sky-400 shadow-md'
-                            : 'bg-slate-800/70 text-slate-300 hover:text-white border-slate-700/80'
-                        }`}
-                      >
-                        <Users className="w-3.5 h-3.5 text-sky-400" />
-                        <span>Following ({user.following?.length || 0})</span>
-                      </button>
-                    )}
-                  </div>
-
+                {/* Right Section: Sort, Mood, Form & Counter (One line on desktop, full-width responsive on mobile) */}
+                <div className="exploration-filter-track">
                   {/* Sort Dropdown */}
-                  <div className="relative flex items-center text-xs ml-auto">
+                  <div className="relative flex items-center text-xs flex-1 sm:flex-initial">
                     <button
                       onClick={() => setShowSortMenu(!showSortMenu)}
-                      className="sort-trigger-btn text-xs py-1.5 px-3 sm:px-3.5"
+                      className="sort-trigger-btn text-xs py-1.5 px-2.5 sm:px-3 w-full sm:w-auto justify-between sm:justify-start whitespace-nowrap"
                     >
                       <SlidersHorizontal className="w-3.5 h-3.5 text-[#d4af37]" />
-                      <span className="sort-label-text hidden xs:inline">Sort:</span>
-                      <span className="sort-value-text font-medium">
+                      <span className="sort-label-text hidden md:inline">Sort:</span>
+                      <span className="sort-value-text font-medium text-[11px] sm:text-xs">
                         {sortBy === 'latest' && 'Latest (नवीनतम)'}
                         {sortBy === 'views' && 'Most Read (पठित)'}
                         {sortBy === 'likes' && 'Most Appreciated'}
@@ -329,7 +359,7 @@ const MainApp = () => {
                     </button>
 
                     {showSortMenu && (
-                      <div className="royal-dropdown-panel sort-menu animate-fade-in right-0">
+                      <div className="royal-dropdown-panel sort-menu animate-fade-in right-0 z-30">
                         {[
                           { id: 'latest', label: 'Latest Verses (नवीनतम)' },
                           { id: 'views', label: 'Most Read (सर्वाधिक पठित)' },
@@ -345,89 +375,101 @@ const MainApp = () => {
                             className={`royal-dropdown-item ${sortBy === opt.id ? 'active' : ''}`}
                           >
                             <span>{opt.label}</span>
-                            {sortBy === opt.id && <Check className="w-3.5 h-3.5 text-slate-950" />}
+                            {sortBy === opt.id && <Check className="w-3.5 h-3.5 text-amber-600 dark:text-slate-950" />}
                           </button>
                         ))}
                       </div>
                     )}
                   </div>
-                </div>
 
-                {/* Row 2: Mood (Rasa) & Poetic Form Quick Selectors */}
-                <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    {/* Rasa / Mood Selector */}
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[11px] font-semibold text-[#d4af37] uppercase tracking-wider flex items-center gap-1 font-['Cinzel']">
-                        <span>🎭</span> रस / Mood:
-                      </span>
-                      <select
-                        value={selectedRasa}
-                        onChange={(e) => setSelectedRasa(e.target.value)}
-                        className="bg-slate-950 text-slate-200 text-xs px-3 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer"
-                      >
-                        <option value="All">All Rasas (सभी रस)</option>
-                        <option value="Veer">⚔️ Veer (वीर रस)</option>
-                        <option value="Shringar">🌸 Shringar (शृंगार रस)</option>
-                        <option value="Karun">💧 Karun (करुण रस)</option>
-                        <option value="Shant">🕊️ Shant (शांत रस)</option>
-                        <option value="Bhakti">🪔 Bhakti (भक्ति रस)</option>
-                        <option value="Hasya">😄 Hasya (हास्य रस)</option>
-                        <option value="Adbhut">✨ Adbhut (अद्भुत रस)</option>
-                      </select>
-                    </div>
-
-                    {/* Form / Poetic Genre Selector */}
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[11px] font-semibold text-[#d4af37] uppercase tracking-wider flex items-center gap-1 font-['Cinzel']">
-                        <span>📜</span> विधा / Form:
-                      </span>
-                      <select
-                        value={selectedForm}
-                        onChange={(e) => setSelectedForm(e.target.value)}
-                        className="bg-slate-950 text-slate-200 text-xs px-3 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer"
-                      >
-                        {formsList.map((f) => (
-                          <option key={f} value={f}>
-                            {f}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Active Filter Clear indicator */}
-                    {(selectedRasa !== 'All' || selectedForm !== 'All' || filterFollowingOnly || searchQuery) && (
-                      <button
-                        onClick={() => {
-                          setSelectedRasa('All');
-                          setSelectedForm('All');
-                          setFilterFollowingOnly(false);
-                          setSearchQuery('');
-                        }}
-                        className="text-[11px] text-amber-400 hover:text-amber-300 underline font-medium cursor-pointer flex items-center gap-1"
-                      >
-                        <X className="w-3 h-3" />
-                        <span>Clear all filters</span>
-                      </button>
-                    )}
+                  {/* Rasa / Mood Selector */}
+                  <div className="flex items-center text-xs flex-1 sm:flex-initial">
+                    <select
+                      value={selectedRasa}
+                      onChange={(e) => setSelectedRasa(e.target.value)}
+                      className={`text-xs px-2.5 py-1.5 rounded-xl border focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer transition-colors w-full sm:w-auto shrink-0 ${
+                        isDark
+                          ? 'bg-slate-950 text-slate-200 border-slate-700/80'
+                          : 'bg-white text-stone-800 border-stone-300 shadow-sm'
+                      }`}
+                      title="रस / Mood Filter"
+                    >
+                      <option value="All">🎭 All Rasas (सभी रस)</option>
+                      <option value="Veer">⚔️ Veer (वीर रस)</option>
+                      <option value="Shringar">🌸 Shringar (शृंगार रस)</option>
+                      <option value="Karun">💧 Karun (करुण रस)</option>
+                      <option value="Shant">🕊️ Shant (शांत रस)</option>
+                      <option value="Bhakti">🪔 Bhakti (भक्ति रस)</option>
+                      <option value="Hasya">😄 Hasya (हास्य रस)</option>
+                      <option value="Adbhut">✨ Adbhut (अद्भुत रस)</option>
+                    </select>
                   </div>
 
-                  <div className="text-[11px] text-slate-400 flex items-center gap-1.5 ml-auto">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Displaying {displayedKavitas.length} verses</span>
+                  {/* Form / Poetic Genre Selector */}
+                  <div className="flex items-center text-xs flex-1 sm:flex-initial">
+                    <select
+                      value={selectedForm}
+                      onChange={(e) => setSelectedForm(e.target.value)}
+                      className={`text-xs px-2.5 py-1.5 rounded-xl border focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer transition-colors w-full sm:w-auto shrink-0 ${
+                        isDark
+                          ? 'bg-slate-950 text-slate-200 border-slate-700/80'
+                          : 'bg-white text-stone-800 border-stone-300 shadow-sm'
+                      }`}
+                      title="विधा / Form Filter"
+                    >
+                      {formsList.map((f) => (
+                        <option key={f} value={f}>
+                          📜 {f === 'All' ? 'All Forms (विधाएँ)' : f}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Active Filter Clear indicator */}
+                  {(selectedRasa !== 'All' || selectedForm !== 'All' || filterFollowingOnly || searchQuery) && (
+                    <button
+                      onClick={() => {
+                        setSelectedRasa('All');
+                        setSelectedForm('All');
+                        setFilterFollowingOnly(false);
+                        setSearchQuery('');
+                      }}
+                      className="text-[11px] text-amber-500 hover:text-amber-400 underline font-medium cursor-pointer flex items-center gap-1 shrink-0 whitespace-nowrap px-1 py-1"
+                      title="Clear all active filters"
+                    >
+                      <X className="w-3 h-3" />
+                      <span>Clear</span>
+                    </button>
+                  )}
+
+                  {/* Live Verse Count Pill */}
+                  <div
+                    className={`text-[11px] flex items-center gap-1.5 shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full border ${
+                      isDark
+                        ? 'bg-slate-950/80 border-slate-800 text-slate-300'
+                        : 'bg-white/90 border-stone-200 text-stone-700 shadow-xs'
+                    }`}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className="font-semibold text-amber-500 dark:text-amber-300">{displayedKavitas.length}</span>
+                    <span className="text-[10px] opacity-80">verses</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Main Poem Grid */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 poem-feed-container">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl sm:text-2xl font-bold font-['Rozha_One'] text-white flex items-center gap-2">
+                <h2
+                  className={`text-xl sm:text-2xl font-bold font-['Rozha_One'] flex items-center gap-2 ${
+                    isDark ? 'text-white' : 'text-stone-900'
+                  }`}
+                >
                   <BookOpen className="w-5 h-5 text-[#d4af37]" />
                   काव्य धारा (Explore Verses)
                 </h2>
-                <span className="text-xs text-slate-400">
+                <span className={`text-xs ${isDark ? 'text-slate-400' : 'text-stone-500'}`}>
                   Showing {displayedKavitas.length} poetic works
                 </span>
               </div>
@@ -484,7 +526,11 @@ const MainApp = () => {
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-2">
                 <Sparkles className="w-3.5 h-3.5" /> आज का विशिष्ट काव्य (Daily Masterpiece)
               </span>
-              <h1 className="text-3xl font-bold font-['Rozha_One'] text-white">
+              <h1
+                className={`text-3xl font-bold font-['Rozha_One'] ${
+                  isDark ? 'text-white' : 'text-[#800020]'
+                }`}
+              >
                 आज की कविता (Verse of the Day)
               </h1>
             </div>
@@ -552,7 +598,11 @@ const MainApp = () => {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer
+        setActiveTab={setActiveTab}
+        setSelectedLang={setSelectedLang}
+        setSelectedRasa={setSelectedRasa}
+      />
 
       {/* Mobile Sticky Bottom Navigation Bar (Phone & Small Tablet) */}
       <nav className="mobile-bottom-nav" aria-label="Mobile Navigation">
@@ -572,38 +622,44 @@ const MainApp = () => {
           <span>आज की कविता</span>
         </button>
 
-        <button
-          onClick={() => {
-            if (!user) {
-              setActiveTab('login');
-              return;
-            }
-            setActiveTab('studio');
-          }}
-          className={`mobile-nav-btn ${activeTab === 'studio' ? 'active' : ''}`}
-        >
-          <PenTool className="w-4 h-4 text-[#d4af37]" />
-          <span>रचना कक्ष</span>
-        </button>
+        {/* If NOT logged in, show Sign In option */}
+        {!user && (
+          <button
+            onClick={() => setActiveTab('login')}
+            className={`mobile-nav-btn ${activeTab === 'login' || activeTab === 'signup' ? 'active' : ''}`}
+          >
+            <User className="w-4 h-4 text-[#d4af37]" />
+            <span>प्रवेश (Sign In)</span>
+          </button>
+        )}
 
-        <button
-          onClick={() => {
-            if (!user) {
-              setActiveTab('login');
-              return;
-            }
-            setActiveTab('my-kavitas');
-          }}
-          className={`mobile-nav-btn ${activeTab === 'my-kavitas' || activeTab === 'dashboard' ? 'active' : ''}`}
-        >
-          <Layers className="w-4 h-4 text-emerald-400" />
-          <span>मेरी कविताएँ</span>
-        </button>
+        {/* If logged in, show Studio */}
+        {user && isWriter && (
+          <button
+            onClick={() => setActiveTab('studio')}
+            className={`mobile-nav-btn ${activeTab === 'studio' ? 'active' : ''} animate-scale-pop`}
+          >
+            <PenTool className="w-4 h-4 text-[#d4af37]" />
+            <span>रचना कक्ष</span>
+          </button>
+        )}
 
-        {isAdmin && (
+        {/* If logged in, show My Kavitas */}
+        {user && (
+          <button
+            onClick={() => setActiveTab('my-kavitas')}
+            className={`mobile-nav-btn ${activeTab === 'my-kavitas' || activeTab === 'dashboard' ? 'active' : ''} animate-scale-pop`}
+          >
+            <Layers className="w-4 h-4 text-emerald-400" />
+            <span>मेरी कविताएँ</span>
+          </button>
+        )}
+
+        {/* If admin, show Admin Portal */}
+        {user && isAdmin && (
           <button
             onClick={() => setActiveTab('admin')}
-            className={`mobile-nav-btn ${activeTab === 'admin' ? 'active' : ''}`}
+            className={`mobile-nav-btn ${activeTab === 'admin' ? 'active' : ''} animate-scale-pop`}
           >
             <ShieldAlert className="w-4 h-4 text-[#ffd700]" />
             <span>एडमिन</span>

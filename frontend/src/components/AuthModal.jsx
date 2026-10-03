@@ -266,6 +266,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Mirza Ghalib / Harivansh Rai Bachchan"
                   className="form-control pl-10 text-xs"
+                  style={{ paddingLeft: 42 }}
                 />
               </div>
             </div>
@@ -284,6 +285,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   className="form-control pl-10 text-xs"
+                  style={{ paddingLeft: 42 }}
                 />
               </div>
             </div>
@@ -306,6 +308,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
                   placeholder="123456"
                   className="form-control pl-10 text-center tracking-[0.4em] font-mono text-base font-bold text-[#fceda2]"
+                  style={{ paddingLeft: 14, paddingRight: 14 }}
                   autoFocus
                 />
               </div>
@@ -343,6 +346,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="form-control pl-10 text-xs"
+                  style={{ paddingLeft: 42 }}
                 />
               </div>
             </div>
@@ -362,6 +366,7 @@ export const AuthModal = ({ isOpen, onClose }) => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••"
                   className="form-control pl-10 text-xs"
+                  style={{ paddingLeft: 42 }}
                 />
               </div>
             </div>

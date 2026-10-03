@@ -321,17 +321,55 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
   const hiddenCount = poems.filter((p) => p.isVisible === false).length;
   const draftCount = poems.filter((p) => p.status === 'draft').length;
 
+  if (!user) {
+    return (
+      <div className="max-w-xl mx-auto px-4 py-20 text-center animate-fade-in font-['Poppins']">
+        <div
+          className={`p-8 sm:p-10 rounded-3xl border shadow-2xl transition-all duration-300 ${
+            isDark
+              ? 'bg-slate-900 border-[#d4af37]/35 text-white shadow-black/80'
+              : 'bg-[#fffaf2] border-[#b8860b]/35 text-stone-900 shadow-xl'
+          }`}
+        >
+          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500">
+            <BookOpen className="w-8 h-8" />
+          </div>
+          <h2 className="text-2xl font-bold font-['Rozha_One'] mb-2">
+            मेरी कविताएँ (My Kavitas Hub)
+          </h2>
+          <p className={`text-sm mb-6 ${isDark ? 'text-slate-300' : 'text-stone-600'}`}>
+            कृपया अपने दीवान, प्रकाशित रचनाओं और पाठकों की टिप्पणियों को प्रबंधित करने के लिए साइन इन करें।
+          </p>
+          <button
+            onClick={onOpenStudio}
+            className="btn-royal text-sm py-2.5 px-6 rounded-xl font-semibold cursor-pointer shadow-lg"
+          >
+            प्रवेश करें (Sign In)
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in font-['Poppins']">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-[#d4af37]/25 pb-5">
+      <div
+        className={`flex flex-wrap items-center justify-between gap-4 mb-8 border-b pb-5 ${
+          isDark ? 'border-[#d4af37]/25' : 'border-[#b8860b]/25'
+        }`}
+      >
         <div>
           <div className="flex items-center gap-3">
             <span className="p-2.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 text-emerald-400 shadow-sm">
               <BookOpen className="w-5 h-5" />
             </span>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold font-['Rozha_One'] text-white">
+              <h1
+                className={`text-2xl sm:text-3xl font-bold font-['Rozha_One'] ${
+                  isDark ? 'text-white' : 'text-[#800020]'
+                }`}
+              >
                 मेरी कविताएँ (My Kavitas Hub)
               </h1>
               <p className="text-xs text-[#d4af37] font-semibold uppercase tracking-wider mt-0.5">
@@ -339,7 +377,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
               </p>
             </div>
           </div>
-          <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+          <p
+            className={`text-xs sm:text-sm mt-2 max-w-2xl ${
+              isDark ? 'text-slate-400' : 'text-stone-600'
+            }`}
+          >
             Search, manage, modify, and control public visibility of your verses. Download complete PDF books or clean UTF-8 archives.
           </p>
         </div>
@@ -517,21 +559,34 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
       {activeTab === 'poems' && (
         <div className="space-y-5">
           {/* Dedicated Search & Filter Command Bar */}
-          <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-xl backdrop-blur-md space-y-4">
+          <div
+            className={`p-4 rounded-2xl border shadow-xl backdrop-blur-md space-y-4 transition-colors ${
+              isDark
+                ? 'bg-slate-900/80 border-slate-800/90'
+                : 'bg-white/90 border-stone-200 shadow-sm'
+            }`}
+          >
             {/* Search Input on Poet's Kavitas */}
             <div className="relative">
               <Search className="w-4 h-4 text-[#d4af37] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="🔍 Search in your kavitas by title, verses, lines, or tags..."
+                placeholder="Search in your kavitas by title, verses, lines, or tags..."
                 value={poemSearchQuery}
                 onChange={(e) => setPoemSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700/80 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-[#d4af37] transition-all"
+                className={`w-full pl-10 pr-10 py-2.5 rounded-xl text-xs sm:text-sm border focus:outline-none focus:ring-1 focus:ring-[#d4af37] transition-all ${
+                  isDark
+                    ? 'bg-slate-950/80 border-slate-700/80 text-white placeholder-slate-400'
+                    : 'bg-[#faf6ee] border-stone-300 text-stone-900 placeholder-stone-500 shadow-inner'
+                }`}
+                style={{ paddingLeft: 42 }}
               />
               {poemSearchQuery && (
                 <button
                   onClick={() => setPoemSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1"
+                  className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 ${
+                    isDark ? 'text-slate-400 hover:text-white' : 'text-stone-500 hover:text-stone-900'
+                  }`}
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -547,7 +602,9 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                   className={`px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
                     filterVisibility === 'all'
                       ? 'bg-[#d4af37] text-slate-950 font-bold shadow-sm'
-                      : 'bg-slate-800 text-slate-300 hover:text-white'
+                      : isDark
+                      ? 'bg-slate-800 text-slate-300 hover:text-white'
+                      : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
                   }`}
                 >
                   All ({poems.length})
@@ -558,7 +615,9 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                   className={`px-3 py-1.5 rounded-lg font-medium transition-all flex items-center gap-1 cursor-pointer ${
                     filterVisibility === 'visible'
                       ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
-                      : 'bg-slate-800 text-emerald-300 hover:bg-slate-700'
+                      : isDark
+                      ? 'bg-slate-800 text-emerald-300 hover:bg-slate-700'
+                      : 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100'
                   }`}
                 >
                   <Globe className="w-3 h-3" />
@@ -570,7 +629,9 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                   className={`px-3 py-1.5 rounded-lg font-medium transition-all flex items-center gap-1 cursor-pointer ${
                     filterVisibility === 'hidden'
                       ? 'bg-rose-500 text-white font-bold shadow-sm'
-                      : 'bg-slate-800 text-rose-300 hover:bg-slate-700'
+                      : isDark
+                      ? 'bg-slate-800 text-rose-300 hover:bg-slate-700'
+                      : 'bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100'
                   }`}
                 >
                   <Lock className="w-3 h-3" />
@@ -582,7 +643,9 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                   className={`px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
                     filterVisibility === 'draft'
                       ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
-                      : 'bg-slate-800 text-amber-300 hover:bg-slate-700'
+                      : isDark
+                      ? 'bg-slate-800 text-amber-300 hover:bg-slate-700'
+                      : 'bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100'
                   }`}
                 >
                   Drafts ({draftCount})
@@ -595,7 +658,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                 <select
                   value={filterLanguage}
                   onChange={(e) => setFilterLanguage(e.target.value)}
-                  className="bg-slate-950 text-slate-200 text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer"
+                  className={`text-xs px-2.5 py-1.5 rounded-lg border focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer ${
+                    isDark
+                      ? 'bg-slate-950 text-slate-200 border-slate-700'
+                      : 'bg-white text-stone-800 border-stone-300 shadow-sm'
+                  }`}
                 >
                   <option value="All">All Languages</option>
                   <option value="Hindi">Hindi (हिन्दी)</option>
@@ -610,7 +677,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                 <select
                   value={filterRasa}
                   onChange={(e) => setFilterRasa(e.target.value)}
-                  className="bg-slate-950 text-slate-200 text-xs px-2.5 py-1.5 rounded-lg border border-slate-700 focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer"
+                  className={`text-xs px-2.5 py-1.5 rounded-lg border focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer ${
+                    isDark
+                      ? 'bg-slate-950 text-slate-200 border-slate-700'
+                      : 'bg-white text-stone-800 border-stone-300 shadow-sm'
+                  }`}
                 >
                   <option value="All">All Rasas</option>
                   <option value="Veer">Veer (वीर)</option>
@@ -626,7 +697,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-slate-950 text-[#ffd700] text-xs font-semibold px-2.5 py-1.5 rounded-lg border border-[#d4af37]/40 focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer"
+                  className={`text-xs font-semibold px-2.5 py-1.5 rounded-lg border focus:outline-none focus:ring-1 focus:ring-[#d4af37] cursor-pointer ${
+                    isDark
+                      ? 'bg-slate-950 text-[#ffd700] border-[#d4af37]/40'
+                      : 'bg-white text-[#800020] border-amber-600/40 shadow-sm'
+                  }`}
                 >
                   <option value="latest">Sort: Newest First</option>
                   <option value="views">Sort: Most Viewed (👁️)</option>
@@ -713,10 +788,14 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                 return (
                   <div
                     key={p._id}
-                    className={`p-4 sm:p-5 rounded-2xl border transition-all shadow-md flex flex-col md:flex-row md:items-center md:justify-between gap-4 ${
-                      isVisible
-                        ? 'bg-slate-900/90 border-slate-800 hover:border-[#d4af37]/45'
-                        : 'bg-slate-950/95 border-amber-900/30 opacity-90'
+                    className={`p-4 sm:p-5 rounded-2xl border transition-all shadow-md flex flex-col md:flex-row md:items-center md:justify-between gap-4 card-hover-lift ${
+                      isDark
+                        ? isVisible
+                          ? 'bg-slate-900/90 border-slate-800 hover:border-[#d4af37]/45'
+                          : 'bg-slate-950/95 border-amber-900/30 opacity-90'
+                        : isVisible
+                          ? 'bg-white border-stone-200 hover:border-[#b8860b]/45 shadow-sm'
+                          : 'bg-amber-50/50 border-amber-200/50 opacity-90'
                     }`}
                   >
                     {/* Left Details: Title, Subtitle, Badges, Excerpt */}
@@ -724,7 +803,9 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                       <div className="flex items-center gap-2 flex-wrap">
                         <span
                           onClick={() => onReadPoem(p)}
-                          className="font-['Rozha_One'] text-lg sm:text-xl text-white hover:text-[#ffd700] transition-colors cursor-pointer"
+                          className={`font-['Rozha_One'] text-lg sm:text-xl transition-colors cursor-pointer ${
+                            isDark ? 'text-white hover:text-[#ffd700]' : 'text-stone-900 hover:text-[#800020]'
+                          }`}
                         >
                           {p.title}
                         </span>
@@ -745,22 +826,34 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                           className={`text-[10px] px-2 py-0.5 rounded uppercase font-semibold ${
                             p.status === 'published' || p.status === 'featured'
                               ? 'bg-sky-500/15 text-sky-400 border border-sky-500/30'
-                              : 'bg-slate-800 text-slate-300 border border-slate-700'
+                              : isDark
+                              ? 'bg-slate-800 text-slate-300 border border-slate-700'
+                              : 'bg-stone-100 text-stone-700 border border-stone-200'
                           }`}
                         >
                           {p.status}
                         </span>
 
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-[#800020]/30 text-[#fceda2] border border-[#d4af37]/35 font-medium">
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-[#800020]/25 text-[#fceda2] border border-[#d4af37]/35 font-medium">
                           {p.language || 'Hindi'}
                         </span>
 
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">
+                        <span
+                          className={`text-[10px] px-2 py-0.5 rounded border ${
+                            isDark
+                              ? 'bg-slate-800 text-amber-300 border-slate-700'
+                              : 'bg-amber-50 text-amber-800 border-amber-200'
+                          }`}
+                        >
                           {p.rasa}
                         </span>
 
                         {p.form && (
-                          <span className="text-[10px] text-slate-400 hidden sm:inline">
+                          <span
+                            className={`text-[10px] hidden sm:inline ${
+                              isDark ? 'text-slate-400' : 'text-stone-500'
+                            }`}
+                          >
                             • {p.form}
                           </span>
                         )}
@@ -773,12 +866,22 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                       )}
 
                       {snippet && (
-                        <p className="text-xs text-slate-300 font-['Tiro_Devanagari_Hindi'] italic line-clamp-1 bg-slate-950/50 p-2 rounded-lg border border-slate-800/80">
+                        <p
+                          className={`text-xs font-['Tiro_Devanagari_Hindi'] italic line-clamp-1 p-2 rounded-lg border ${
+                            isDark
+                              ? 'text-slate-300 bg-slate-950/50 border-slate-800/80'
+                              : 'text-stone-700 bg-amber-50/60 border-stone-200'
+                          }`}
+                        >
                           "{snippet}..."
                         </p>
                       )}
 
-                      <div className="flex items-center gap-3 text-[11px] text-slate-400 pt-0.5">
+                      <div
+                        className={`flex items-center gap-3 text-[11px] pt-0.5 ${
+                          isDark ? 'text-slate-400' : 'text-stone-500'
+                        }`}
+                      >
                         <span>Created: {new Date(p.createdAt).toLocaleDateString()}</span>
                         {p.tags && p.tags.length > 0 && (
                           <span className="hidden sm:inline">
@@ -789,14 +892,24 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                     </div>
 
                     {/* Right Controls: Views & Likes Metrics + Action Buttons */}
-                    <div className="flex items-center gap-2.5 sm:gap-4 flex-wrap shrink-0 border-t md:border-t-0 pt-3 md:pt-0 border-slate-800/80 w-full md:w-auto justify-between md:justify-end">
+                    <div
+                      className={`flex items-center gap-2.5 sm:gap-4 flex-wrap shrink-0 border-t md:border-t-0 pt-3 md:pt-0 w-full md:w-auto justify-between md:justify-end ${
+                        isDark ? 'border-slate-800/80' : 'border-stone-200'
+                      }`}
+                    >
                       {/* Live Engagement Metrics */}
-                      <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs shrink-0">
+                      <div
+                        className={`flex items-center gap-2.5 px-3 py-1.5 rounded-xl border text-xs shrink-0 ${
+                          isDark
+                            ? 'bg-slate-950/80 border-slate-800'
+                            : 'bg-stone-50 border-stone-200 text-stone-800 shadow-inner'
+                        }`}
+                      >
                         <span className="flex items-center gap-1 text-[#ffd700]" title="Total Readers Viewed">
                           <Eye className="w-3.5 h-3.5" />
                           <span className="font-bold">{p.viewsCount || 0}</span>
                         </span>
-                        <span className="w-px h-3 bg-slate-800"></span>
+                        <span className={`w-px h-3 ${isDark ? 'bg-slate-800' : 'bg-stone-300'}`}></span>
                         <span className="flex items-center gap-1 text-rose-400" title="Appreciations">
                           <Heart className="w-3.5 h-3.5 fill-rose-500/20" />
                           <span className="font-bold">{p.likesCount || 0}</span>
@@ -808,8 +921,8 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                         onClick={() => handleToggleVisibility(p._id, isVisible, p.title)}
                         className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer border shadow-sm shrink-0 ${
                           isVisible
-                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 hover:bg-emerald-500/30'
-                            : 'bg-amber-500/20 text-amber-200 border-amber-500/40 hover:bg-amber-500/30'
+                            ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 hover:bg-emerald-500/30'
+                            : 'bg-amber-500/20 text-amber-500 border-amber-500/40 hover:bg-amber-500/30'
                         }`}
                         title={
                           isVisible
@@ -835,7 +948,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                         {/* Quick Read / Preview */}
                         <button
                           onClick={() => onReadPoem(p)}
-                          className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+                          className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                            isDark
+                              ? 'bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700'
+                              : 'bg-stone-100 text-stone-700 hover:text-stone-900 hover:bg-stone-200 border border-stone-200'
+                          }`}
                           title="Preview full poem in reader"
                         >
                           <BookOpen className="w-4 h-4 text-emerald-400" />
@@ -844,7 +961,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                         {/* Quick Metadata Edit Modal */}
                         <button
                           onClick={() => setQuickEditPoem(p)}
-                          className="p-2 rounded-xl bg-slate-800 text-amber-300 hover:bg-slate-700 transition-colors cursor-pointer"
+                          className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                            isDark
+                              ? 'bg-slate-800 text-amber-300 hover:bg-slate-700'
+                              : 'bg-stone-100 text-amber-700 hover:bg-stone-200 border border-stone-200'
+                          }`}
                           title="Quick edit metadata & title"
                         >
                           <SlidersHorizontal className="w-4 h-4" />
@@ -853,7 +974,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                         {/* Edit in Studio */}
                         <button
                           onClick={() => onEditPoem(p)}
-                          className="p-2 rounded-xl bg-slate-800 text-sky-400 hover:bg-slate-700 transition-colors cursor-pointer"
+                          className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                            isDark
+                              ? 'bg-slate-800 text-sky-400 hover:bg-slate-700'
+                              : 'bg-stone-100 text-sky-700 hover:bg-stone-200 border border-stone-200'
+                          }`}
                           title="Open in Studio to edit stanzas, verses & audio"
                         >
                           <Edit className="w-4 h-4" />
@@ -862,7 +987,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                         {/* Export PDF */}
                         <button
                           onClick={() => exportKavitaToPdf(p, p.title)}
-                          className="p-2 rounded-xl bg-slate-800 text-[#d4af37] hover:bg-slate-700 transition-colors cursor-pointer"
+                          className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                            isDark
+                              ? 'bg-slate-800 text-[#d4af37] hover:bg-slate-700'
+                              : 'bg-stone-100 text-amber-800 hover:bg-stone-200 border border-stone-200'
+                          }`}
                           title="Export single poem PDF"
                         >
                           <FileDown className="w-4 h-4" />
@@ -871,7 +1000,11 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                         {/* Export Text (.txt) */}
                         <button
                           onClick={() => exportKavitaToText(p)}
-                          className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors cursor-pointer"
+                          className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                            isDark
+                              ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                              : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-200'
+                          }`}
                           title="Download clean UTF-8 text"
                         >
                           <FileText className="w-4 h-4" />
@@ -899,19 +1032,33 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
       {activeTab === 'comments' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-slate-200">
+            <h3
+              className={`text-sm font-semibold ${
+                isDark ? 'text-slate-200' : 'text-[#800020]'
+              }`}
+            >
               Reader Reflections Received on Your Poetry ({poetComments.length})
             </h3>
-            <p className="text-[11px] text-slate-400">
+            <p
+              className={`text-[11px] ${
+                isDark ? 'text-slate-400' : 'text-stone-500'
+              }`}
+            >
               Every reflection written by readers is archived here for your poetic journey.
             </p>
           </div>
 
           {poetComments.length === 0 ? (
-            <div className="text-center py-16 bg-slate-900/40 rounded-2xl border border-slate-800">
-              <MessageSquare className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-              <p className="text-sm text-slate-400">No reflections received yet.</p>
-              <p className="text-xs text-slate-500 mt-1">
+            <div
+              className={`text-center py-16 rounded-2xl border ${
+                isDark
+                  ? 'bg-slate-900/40 border-slate-800'
+                  : 'bg-white border-stone-200 shadow-sm'
+              }`}
+            >
+              <MessageSquare className="w-10 h-10 text-slate-500 mx-auto mb-3" />
+              <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-stone-600'}`}>No reflections received yet.</p>
+              <p className={`text-xs mt-1 ${isDark ? 'text-slate-500' : 'text-stone-400'}`}>
                 As readers explore your verses on the website, their heartfelt reflections will appear here.
               </p>
             </div>
@@ -920,27 +1067,43 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
               {poetComments.map((c) => (
                 <div
                   key={c._id}
-                  className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-[#d4af37]/35 transition-all space-y-2 shadow-sm"
+                  className={`p-4 rounded-xl border transition-all space-y-2 shadow-sm ${
+                    isDark
+                      ? 'bg-slate-900/90 border-slate-800 hover:border-[#d4af37]/35'
+                      : 'bg-white border-stone-200 hover:border-[#b8860b]/40 shadow-sm'
+                  }`}
                 >
                   <div className="flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-[#800020] text-white flex items-center justify-center font-bold text-[10px]">
                         {c.userName?.charAt(0) || 'R'}
                       </div>
-                      <span className="font-semibold text-[#f5e7a9]">{c.userName}</span>
-                      <span className="text-[10px] text-slate-500 font-sans">
+                      <span
+                        className={`font-semibold ${
+                          isDark ? 'text-[#f5e7a9]' : 'text-[#800020]'
+                        }`}
+                      >
+                        {c.userName}
+                      </span>
+                      <span className={`text-[10px] font-sans ${isDark ? 'text-slate-500' : 'text-stone-400'}`}>
                         • {new Date(c.createdAt).toLocaleDateString()}
                       </span>
                     </div>
 
                     {c.kavita && (
-                      <span className="text-[11px] text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">
+                      <span className="text-[11px] text-sky-500 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20 font-medium">
                         Poem: "{c.kavita.title}"
                       </span>
                     )}
                   </div>
 
-                  <p className="text-xs text-slate-200 font-['Tiro_Devanagari_Hindi'] bg-slate-950/60 p-3 rounded-lg border border-slate-800 leading-relaxed italic">
+                  <p
+                    className={`text-xs font-['Tiro_Devanagari_Hindi'] p-3 rounded-lg border leading-relaxed italic ${
+                      isDark
+                        ? 'text-slate-200 bg-slate-950/60 border-slate-800'
+                        : 'text-stone-800 bg-[#faf6ee] border-stone-200'
+                    }`}
+                  >
                     "{c.content}"
                   </p>
 
@@ -948,7 +1111,7 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
                     <div className="text-right">
                       <button
                         onClick={() => onReadPoem(c.kavita)}
-                        className="text-[11px] text-[#d4af37] hover:underline inline-flex items-center gap-1 cursor-pointer"
+                        className="text-[11px] text-[#d4af37] hover:underline inline-flex items-center gap-1 cursor-pointer font-medium"
                       >
                         <span>Open "{c.kavita.title}" & Read Verse</span>
                         <ArrowUpRight className="w-3 h-3" />
@@ -965,7 +1128,13 @@ export const PoetDashboard = ({ onOpenStudio, onEditPoem, onReadPoem }) => {
       {/* MODAL 1: QUICK INLINE METADATA EDITOR */}
       {quickEditPoem && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-          <div className="relative w-full max-w-lg bg-slate-900 border border-[#d4af37]/45 rounded-2xl shadow-2xl p-6">
+          <div
+            className={`relative w-full max-w-lg border rounded-2xl shadow-2xl p-6 transition-colors ${
+              isDark
+                ? 'bg-slate-900 border-[#d4af37]/45 text-white'
+                : 'bg-white border-[#b8860b]/40 text-stone-900'
+            }`}
+          >
             <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-amber-500/20 text-[#ffd700]">

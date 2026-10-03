@@ -331,6 +331,7 @@ export const AuthPage = ({ initialMode = 'login', onNavigate, onSuccess }) => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Harivansh Rai Bachchan"
                     className={`auth-input ${t}`}
+                    style={{ paddingLeft: 46 }}
                   />
                 </div>
               </div>
@@ -349,6 +350,7 @@ export const AuthPage = ({ initialMode = 'login', onNavigate, onSuccess }) => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
                     className={`auth-input ${t}`}
+                    style={{ paddingLeft: 46 }}
                   />
                 </div>
               </div>
@@ -368,6 +370,7 @@ export const AuthPage = ({ initialMode = 'login', onNavigate, onSuccess }) => {
                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
                     placeholder="123456"
                     className={`auth-input auth-otp-input ${t}`}
+                    style={{ paddingLeft: 14, paddingRight: 14 }}
                     autoFocus
                   />
                 </div>
@@ -401,7 +404,7 @@ export const AuthPage = ({ initialMode = 'login', onNavigate, onSuccess }) => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     className={`auth-input ${t}`}
-                    style={{ paddingRight: 42 }}
+                    style={{ paddingLeft: 46, paddingRight: 44 }}
                   />
                   <button
                     type="button"
@@ -432,6 +435,7 @@ export const AuthPage = ({ initialMode = 'login', onNavigate, onSuccess }) => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
                     className={`auth-input ${t}`}
+                    style={{ paddingLeft: 46 }}
                   />
                 </div>
               </div>
