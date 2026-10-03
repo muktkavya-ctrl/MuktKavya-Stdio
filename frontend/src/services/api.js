@@ -1,4 +1,7 @@
-const API_BASE = 'http://localhost:5000/api';
+// Dynamic API base URL: Reads from VITE_API_URL in production, falls back to local backend
+const rawEnvUrl = import.meta.env.VITE_API_URL;
+const API_BASE = (rawEnvUrl ? rawEnvUrl.trim().replace(/\/$/, '') : 'http://localhost:5000') +
+  (rawEnvUrl && rawEnvUrl.trim().endsWith('/api') ? '' : '/api');
 
 const getHeaders = () => {
   const token = localStorage.getItem('mukt_kavya_token');
